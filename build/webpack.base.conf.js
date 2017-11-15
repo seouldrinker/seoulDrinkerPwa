@@ -43,7 +43,8 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           vueLoaderConfig: vueLoaderConfig,
-          postcss: [require('postcss-cssnext')()]
+          scss: 'vue-style-loader!css-loader!sass-loader',
+          sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
         }
       },
       {
