@@ -2,12 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Feed from '@/container/Feed'
-import Pub from '@/container/Pub'
-import PubDetail from '@/container/PubDetail'
-import PubRank from '@/container/PubRank'
-import Beer from '@/container/Beer'
-import BeerDetail from '@/container/BeerDetail'
-import BeerRank from '@/container/BeerRank'
+import Pub from '@/container/Pub/index'
+import PubDetail from '@/container/Pub/Detail'
+import PubRank from '@/container/Pub/Rank'
+import Beer from '@/container/Beer/index'
+import BeerDetail from '@/container/Beer/Detail'
+import BeerRank from '@/container/Beer/Rank'
 import News from '@/container/News'
 
 Vue.use(Router)
@@ -54,20 +54,5 @@ export default new Router({
       name: 'News',
       component: News
     }
-  ],
-  mode: 'history',
-  scrollBehavior (to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    }
-    if (to.hash) {
-      return {
-        selector: to.hash
-      }
-    }
-    return {
-      x: 0,
-      y: 0
-    }
-  }
+  ]
 })
