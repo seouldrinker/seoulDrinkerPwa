@@ -1,6 +1,6 @@
 <template>
-  <div class="feedImage">
-    <img :src="`${static_url}/${feedImage}`" alt="SeoulDrinker">
+  <div class="feedNewsImage">
+    <img :src="`${static_url}/${feedNewsImage}`" alt="SeoulDrinker">
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 import { STATIC_URL } from '../../config'
 
 export default {
-  props: ['feedImage'],
+  props: ['feedNewsImage'],
   data () {
     return {
       static_url: STATIC_URL
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .feedImage {
+  .feedNewsImage {
     font-size: 0;
     img {
       width: 100%;

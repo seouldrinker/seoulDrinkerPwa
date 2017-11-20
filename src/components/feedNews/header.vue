@@ -1,13 +1,13 @@
 <template>
-  <div class="feedHeader">
+  <div class="feedNewsHeader">
     <span class="profileImage">
-      <img :src="filteredUserImage" alt="SeoulDrinker">
+      <img :src="getFilteredImage()" alt="SeoulDrinker">
     </span>
-    <span class="feedInfo">
+    <span class="feedNewsInfo">
       <div class="userName">
         {{ userName }}
       </div>
-      <div class="feedDate">
+      <div class="feedNewsDate">
         {{ getFilteredDate() }}
       </div>
     </span>
@@ -18,31 +18,37 @@
 import { STATIC_URL } from '../../config'
 
 export default {
-  props: ['userImage', 'userName', 'feedDate'],
+  props: ['userImage', 'userName', 'feedNewsDate'],
   data () {
     return {
-      filteredUserImage: this.userImage
-        ? `${STATIC_URL}/${this.userImage}`
-        : require('@/assets/feed/default_profile.png')
     }
   },
   methods: {
     getFilteredDate () {
-      var generatedDate = new Date(this.feedDate)
+      var generatedDate = new Date(this.feedNewsDate)
       var hour = generatedDate.getHours() > 12
-        ? ('오후 ' + generatedDate.getHours() - 12)
-        : ('오전 ' + generatedDate.getHours())
+        ? '오후 ' + (generatedDate.getHours() - 12)
+        : '오전 ' + generatedDate.getHours()
 
       return (generatedDate.getMonth() + 1) + '월 ' +
         generatedDate.getDate() + '일 ' +
         hour + ':' + generatedDate.getMinutes()
+    },
+    getFilteredImage () {
+      if (this.userImage) {
+        if (this.userImage.includes('news_default_profile')) {
+          return require('@/assets/news/admin.png')
+        }
+        return `${STATIC_URL}/${this.userImage}`
+      }
+      return require('@/assets/feed/default_profile.png')
     }
   }
 }
 </script>
 
 <style lang="scss">
-  .feedHeader {
+  .feedNewsHeader {
     height: 65px;
     padding: 10px 0 0 16px;
     box-sizing: border-box;
@@ -58,13 +64,13 @@ export default {
           border-radius: 48px;
         }
       }
-      &.feedInfo {
+      &.feedNewsInfo {
         margin: 0 0 0 10px;
         & > .userName {
           font-size: 15px;
           font-weight: 800;
         }
-        & > .feedDate {
+        & > .feedNewsDate {
           margin: 2px 0 0 0;
           font-size: 12px;
           font-weight: 600;
