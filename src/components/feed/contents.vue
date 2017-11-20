@@ -1,11 +1,19 @@
 <template>
   <div class="feedContents">
-
+    <div class="pub">
+      <router-link :to="`/pub/${pub.index}`" tag="span">
+        {{ pub.kor_name || pub.eng_name }}
+      </router-link>
+    </div>
+    <ul class="beers">
+      <li v-for="(beer, index) in beers" :key="index">
+        <router-link :to="`/beer/${beer.index}`" tag="span">
+          #{{ beer.kor_name || beer.eng_name }}
+        </router-link>
+      </li>
+    </ul>
+    <div class="context">{{ feedContext }}</div>
   </div>
-  <!--
-    <router-link :to="`/scheduler/${index}`" tag="div">
-    </router-link>
-  -->
 </template>
 
 <script>
@@ -19,5 +27,56 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+  .feedContents {
+    padding: 18px 15px;
+    & > .pub {
+      margin: 10px 0 0 28px;
+      font-size: 14px;
+      font-weight: 800;
+      &:before {
+        content: '';
+        position: absolute;
+        left: 15px;
+        display: inline-block;
+        width: 16px;
+        height: 20px;
+        background-image: url(../../assets/feed/feed_place.png);
+        background-size: 16px 20px;
+      }
+      & > span {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+    & > .beers {
+      margin: 10px 0 0 28px;
+      overflow-x: scroll;
+      white-space: nowrap;
+      &:before {
+        content: '';
+        position: absolute;
+        left: 15px;
+        display: inline-block;
+        width: 18px;
+        height: 20px;
+        background-image: url(../../assets/feed/feed_beer.png);
+        background-size: 18px 20px;
+      }
+      & > li {
+        display: inline-block;
+        padding: 2px;
+        vertical-align: top;
+        font-size: 14px;
+        font-weight: 600;
+        background-color: #FBE8C6;
+      }
+    }
+    & > .context {
+      margin: 10px 0 0 0;
+      font-size: 14px;
+      font-weight: 500;
+      word-spacing: -2px;
+    }
+  }
 </style>

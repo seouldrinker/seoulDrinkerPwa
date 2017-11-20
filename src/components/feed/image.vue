@@ -17,5 +17,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+  .feedImage {
+    font-size: 0;
+    img {
+      width: 100%;
+    }
+  }
 </style>

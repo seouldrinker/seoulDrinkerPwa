@@ -23,10 +23,11 @@ export default {
 <style lang="scss">
 header {
   margin: 0;
-  height: 45px;
+  height: 56px;
   padding: 0 24px;
   background-color: #eea51b;
   color: #ffffff;
+  box-shadow: 0 0 10px #4a5156;
   div {
     position: relative;
     font-size: 20px;
@@ -36,7 +37,7 @@ header {
     box-sizing: border-box;
     padding-top: 12px;
     &.header__logo {
-      width: 120px;
+      width: 156px;
       margin: 0 auto;
       img {
         width: 100%;
@@ -46,8 +47,6 @@ header {
 }
 
 main {
-  text-align: center;
-  margin-top: 40px;
   ul {
     li {
       div {
