@@ -6,10 +6,10 @@
           <app-feed-header
             :userImage="feed.user.picture"
             :userName="feed.user.name"
-            :feedDate="feed.udt_dt"
+            :feedNewsDate="feed.udt_dt"
           />
           <app-feed-image
-            :feedImage="feed.image"
+            :feedNewsImage="feed.image"
           />
           <app-feed-contents
             :beers="feed.beers"
@@ -24,8 +24,8 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import Header from '../components/feed/header'
-import Image from '../components/feed/image'
+import Header from '../components/feedNews/header'
+import Image from '../components/feedNews/image'
 import Contents from '../components/feed/contents'
 import Layout from '../layout/index'
 
