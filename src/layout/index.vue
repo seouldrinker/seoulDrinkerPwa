@@ -24,7 +24,7 @@ export default {
 header {
   margin: 0;
   height: 56px;
-  padding: 0 24px;
+  padding: 0 18px;
   background-color: #eea51b;
   color: #ffffff;
   box-shadow: 0 0 10px #4a5156;
@@ -35,9 +35,9 @@ header {
     letter-spacing: .02em;
     font-weight: 400;
     box-sizing: border-box;
-    padding-top: 12px;
     &.header__logo {
       width: 156px;
+      padding-top: 12px;
       margin: 0 auto;
       img {
         width: 100%;
