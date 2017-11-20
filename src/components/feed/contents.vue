@@ -47,6 +47,9 @@ export default {
       & > span {
         display: inline-block;
         vertical-align: top;
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
     & > .beers {
@@ -66,10 +69,16 @@ export default {
       & > li {
         display: inline-block;
         padding: 2px;
+        margin: 0 8px 0 0;
         vertical-align: top;
         font-size: 14px;
         font-weight: 600;
         background-color: #FBE8C6;
+        & > span {
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
     }
     & > .context {
