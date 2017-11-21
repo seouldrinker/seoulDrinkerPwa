@@ -29,10 +29,10 @@ export default {
 
 <style lang="scss">
   .feedContents {
-    padding: 18px 15px;
+    padding: 14px 15px;
     & > .pub {
-      margin: 10px 0 0 28px;
-      font-size: 14px;
+      margin: 0 0 0 28px;
+      font-size: 12px;
       font-weight: 800;
       &:before {
         content: '';
@@ -69,9 +69,9 @@ export default {
       & > li {
         display: inline-block;
         padding: 2px;
-        margin: 0 8px 0 0;
+        margin: 0 4px 0 0;
         vertical-align: top;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 600;
         background-color: #FBE8C6;
         & > span {

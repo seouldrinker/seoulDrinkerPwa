@@ -23,7 +23,7 @@ export default {
 <style lang="scss">
 header {
   margin: 0;
-  height: 56px;
+  height: 45px;
   padding: 0 18px;
   background-color: #eea51b;
   color: #ffffff;
@@ -36,8 +36,8 @@ header {
     font-weight: 400;
     box-sizing: border-box;
     &.header__logo {
-      width: 156px;
-      padding-top: 12px;
+      width: 120px;
+      padding-top: 10px;
       margin: 0 auto;
       img {
         width: 100%;
@@ -45,13 +45,13 @@ header {
     }
   }
   .header__text {
-    padding: 15px 0 0 0;
+    padding: 10px 0 0 0;
     & span {
       display: inline-block;
       vertical-align: top;
       &.logo {
-        width: 30px;
-        height: 30px;
+        width: 24px;
+        height: 24px;
         &:hover {
           cursor: pointer;
         }
@@ -61,8 +61,8 @@ header {
         }
       }
       &.title {
-        margin: 4px 0 0 6px;
-        font-size: 18px;
+        margin: 2px 0 0 6px;
+        font-size: 15px;
         font-weight: 800;
       }
     }

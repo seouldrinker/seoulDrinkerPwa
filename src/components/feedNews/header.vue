@@ -49,30 +49,30 @@ export default {
 
 <style lang="scss">
   .feedNewsHeader {
-    height: 65px;
+    height: 54px;
     padding: 10px 0 0 16px;
     box-sizing: border-box;
     span {
       display: inline-block;
       vertical-align: middle;
       &.profileImage {
-        width: 46px;
-        height: 46px;
+        width: 36px;
+        height: 36px;
         & > img {
           width: 100%;
           height: 100%;
-          border-radius: 48px;
+          border-radius: 36px;
         }
       }
       &.feedNewsInfo {
         margin: 0 0 0 10px;
         & > .userName {
-          font-size: 15px;
+          font-size: 12px;
           font-weight: 800;
         }
         & > .feedNewsDate {
           margin: 2px 0 0 0;
-          font-size: 12px;
+          font-size: 10px;
           font-weight: 600;
           color: #B5B5B5;
         }
