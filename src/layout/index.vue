@@ -28,7 +28,7 @@ header {
   background-color: #eea51b;
   color: #ffffff;
   box-shadow: 0 0 10px #4a5156;
-  div {
+  .header__logo {
     position: relative;
     font-size: 20px;
     line-height: 1;
@@ -41,6 +41,29 @@ header {
       margin: 0 auto;
       img {
         width: 100%;
+      }
+    }
+  }
+  .header__text {
+    padding: 15px 0 0 0;
+    & span {
+      display: inline-block;
+      vertical-align: top;
+      &.logo {
+        width: 30px;
+        height: 30px;
+        &:hover {
+          cursor: pointer;
+        }
+        & > img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      &.title {
+        margin: 4px 0 0 6px;
+        font-size: 18px;
+        font-weight: 800;
       }
     }
   }

@@ -63,26 +63,5 @@ export default {
 </script>
 
 <style lang="scss">
-  .header__text {
-    padding: 15px 0 0 0;
-    & span {
-      display: inline-block;
-      vertical-align: top;
-      &.logo {
-        width: 30px;
-        height: 30px;
-        &:hover {
-          cursor: pointer;
-        }
-        & > img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-      &.title {
-        margin: 5px 0 0 6px;
-        font-weight: 800;
-      }
-    }
-  }
+
 </style>
