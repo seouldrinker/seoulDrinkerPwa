@@ -1,18 +1,19 @@
 <template>
   <div id="beerContainer">
     <app-layout>
-      <div slot="header">Beer</div>
+      <div slot="header" class="header__text">
+        <router-link class="logo" :to="`/`" tag="span">
+          <img src="../../assets/common/back.png" alt="back">
+        </router-link>
+        <span class="title">Beer</span>
+      </div>
       <ul slot="contents">
         <li v-for="(beer, index) in getBeerList" :key="index">
-          <div href="#">{{ beer.eng_name }}</div>
-          <div href="#">{{ beer.kor_name }}</div>
-          <div href="#">{{ beer.about }}</div>
-          <div href="#">{{ beer.feature }}</div>
-          <div href="#">{{ beer.style }}</div>
-          <div href="#">{{ beer.abv }}</div>
-          <div href="#">{{ beer.release }}</div>
-          <div href="#">{{ static_url }}/{{ beer.image }}</div>
-          <div href="#">{{ beer.udt_dt }}</div>
+          <app-list-item
+            :isBeer="true"
+            :data="beer"
+            :image="`${static_url}/${beer.image}`"
+          />
         </li>
       </ul>
     </app-layout>
@@ -21,13 +22,15 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import BeerPubListItem from '../../components/beerPub/list/index'
 import Layout from '../../layout/index'
 
 import { STATIC_URL } from '../../config'
 
 export default {
   components: {
-    appLayout: Layout
+    appLayout: Layout,
+    appListItem: BeerPubListItem
   },
   computed: {
     ...mapGetters([

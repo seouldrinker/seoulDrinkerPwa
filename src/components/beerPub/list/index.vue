@@ -1,9 +1,10 @@
 <template>
-  <div class="beerPubHeader">
-    <span class="image">
+  <router-link class="beerPubHeader" :class="isBeer ? 'beerHeader' : 'pubHeader'"
+    :to="isBeer ? `/beer/${data._id}` : `/pub/${data._id}`" tag="div">
+    <div class="image">
       <img :src="image" alt="SeoulDrinker">
-    </span>
-    <span class="beerPubInfo">
+    </div>
+    <div class="beerPubInfo">
       <div class="engName">
         {{ data.eng_name }}
       </div>
@@ -16,8 +17,8 @@
       <app-pub-item-contents v-else
         :data="data"
       />
-    </span>
-  </div>
+    </div>
+  </router-link>
 </template>
 
 <script>
@@ -42,6 +43,56 @@ export default {
 
 <style lang="scss">
   .beerPubHeader {
-
+    padding: 8px 0 0 16px;
+    border-bottom: 1px solid #E2E2E2;
+    box-sizing: border-box;
+    &.beerHeader {
+      height: 72px;
+    }
+    &.pubHeader {
+      height: 88px;
+      & > .image > img {
+        border-radius: 42px;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    & > div {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 12px;
+      &.image {
+        width: 42px;
+        height: 42px;
+        margin: 4px 0 0 0;
+        font-size: 0;
+        & > img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      &.beerPubInfo {
+        margin: 0 0 0 8px;
+        & > div {
+          margin: 2px 0 0 0;
+          &.engName, &.korName {
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: -1px;
+          }
+          &.beerPubOtherInfo {
+            color: #4a4a4a;
+            font-size: 11px;
+            & > .style {
+              min-width: 80px;
+            }
+            & > .abv {
+              margin: 0 0 0 20px;
+            }
+          }
+        }
+      }
+    }
   }
 </style>
