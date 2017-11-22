@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { STATIC_URL } from '../../config'
+import { STATIC_URL } from '@/config'
 
 export default {
   props: ['newsContext'],
