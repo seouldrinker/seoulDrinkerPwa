@@ -45,7 +45,7 @@ export default new Router({
       component: BeerDetail
     },
     {
-      path: '/',
+      path: '/beer/rank',
       name: 'BeerRank',
       component: BeerRank
     },
