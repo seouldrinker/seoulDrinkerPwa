@@ -1,6 +1,6 @@
 <template>
-  <div class="feedNewsImage">
-    <img :src="`${static_url}/${feedNewsImage}`" alt="SeoulDrinker">
+  <div id="pubDetailInfo">
+
   </div>
 </template>
 
@@ -8,20 +8,17 @@
 import { STATIC_URL } from '@/config'
 
 export default {
-  props: ['feedNewsImage'],
+  props: ['pubLocation', 'pubPhone', 'pubHomepage', 'pubEst', 'pubFacebook', 'pubInstagram'],
   data () {
     return {
       static_url: STATIC_URL
     }
+  },
+  methods: {
   }
 }
 </script>
 
 <style lang="scss">
-  .feedNewsImage {
-    font-size: 0;
-    img {
-      width: 100%;
-    }
-  }
+
 </style>

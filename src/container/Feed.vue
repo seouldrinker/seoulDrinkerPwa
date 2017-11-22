@@ -24,12 +24,12 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import Header from '../components/feedNews/header'
-import Image from '../components/feedNews/image'
-import Contents from '../components/feed/contents'
-import Layout from '../layout/index'
+import Header from '@/components/feedNews/header'
+import Image from '@/components/feedNews/image'
+import Contents from '@/components/feed/contents'
+import Layout from '@/layout/index'
 
-import { STATIC_URL } from '../config'
+import { STATIC_URL } from '@/config'
 
 export default {
   components: {

@@ -1,15 +1,82 @@
 <template>
-
+  <div id="beerDetailContainer">
+    <app-layout>
+      <div slot="header" class="header__text">
+        <router-link class="logo" :to="`/`" tag="span">
+          <img src="../../assets/common/back.png" alt="back">
+        </router-link>
+        <span class="title">Beer</span>
+      </div>
+      <div slot="contents" v-if="getBeerDetail">
+        <app-detail-header
+          :brandImage="getBeerDetail.brewery.brand_image"
+          :titleImage="getBeerDetail.brewery.logo_image"
+          :engName="getBeerDetail.eng_name"
+          :korName="getBeerDetail.kor_name"
+        />
+        <app-detail-info
+          :beerFeature="getBeerDetail.feature"
+          :beerStyle="getBeerDetail.style"
+          :beerRelease="getBeerDetail.release"
+          :beerAbv="getBeerDetail.abv"
+        />
+        <app-detail-contents
+          :about="getBeerDetail.brewery.about"
+          :breweryEngName="getBeerDetail.brewery.eng_name"
+          :breweryKorName="getBeerDetail.brewery.kor_name"
+          :breweryLocation="getBeerDetail.brewery.location"
+          :breweryPhone="getBeerDetail.brewery.phone"
+          :feedList="getBeerDetail._feedList"
+          :rank="getRank()"
+        />
+      </div>
+    </app-layout>
+  </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+import BeerPubDetailHeader from '@/components/beerPub/detail/header'
+import BeerPubDetailContents from '@/components/beerPub/detail/contents'
+import BeerDetailInfo from '@/components/beer/detail/info'
+import Layout from '@/layout/index'
+
+import { STATIC_URL } from '@/config'
+
 export default {
+  components: {
+    appLayout: Layout,
+    appDetailHeader: BeerPubDetailHeader,
+    appDetailInfo: BeerDetailInfo,
+    appDetailContents: BeerPubDetailContents
+  },
+  computed: {
+    ...mapGetters([
+      'getBeerDetail',
+      'getBeerRank'
+    ])
+  },
   data () {
     return {
-
+      static_url: STATIC_URL
     }
   },
   methods: {
+    ...mapActions([
+      'retrieveBeerDetail'
+    ]),
+    getRank () {
+      if (this.getBeerRank) {
+        const index = this.getBeerRank.findIndex((v, k) => {
+          return v.beer._id === this.$route.params.id
+        })
+        return index > -1 ? this.getBeerRank[index].rank : '-'
+      }
+      return '-'
+    }
+  },
+  created () {
+    this.retrieveBeerDetail(this.$route.params.id)
   }
 }
 </script>

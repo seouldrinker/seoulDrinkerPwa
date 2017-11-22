@@ -2,7 +2,7 @@
   <router-link class="beerPubHeader" :class="isBeer ? 'beerHeader' : 'pubHeader'"
     :to="isBeer ? `/beer/${data._id}` : `/pub/${data._id}`" tag="div">
     <div class="image">
-      <img :src="image" alt="SeoulDrinker">
+      <img :src="`${static_url}/${image}`" alt="SeoulDrinker">
     </div>
     <div class="beerPubInfo">
       <div class="engName">
@@ -22,8 +22,10 @@
 </template>
 
 <script>
-import PubItemContents from '../../pub/list/contents'
-import BeerItemContents from '../../beer/list/contents'
+import PubItemContents from '@/components/pub/list/contents'
+import BeerItemContents from '@/components/beer/list/contents'
+
+import { STATIC_URL } from '@/config'
 
 export default {
   components: {
@@ -33,6 +35,7 @@ export default {
   props: ['isBeer', 'data', 'image', 'contents'],
   data () {
     return {
+      static_url: STATIC_URL
     }
   },
   methods: {

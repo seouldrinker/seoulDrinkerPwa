@@ -1,5 +1,5 @@
 <template>
-  <div id="beerContainer">
+  <div id="beerListContainer">
     <app-layout>
       <div slot="header" class="header__text">
         <router-link class="logo" :to="`/`" tag="span">
@@ -12,7 +12,7 @@
           <app-list-item
             :isBeer="true"
             :data="beer"
-            :image="`${static_url}/${beer.image}`"
+            :image="beer.image"
           />
         </li>
       </ul>
@@ -22,10 +22,8 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import BeerPubListItem from '../../components/beerPub/list/index'
-import Layout from '../../layout/index'
-
-import { STATIC_URL } from '../../config'
+import BeerPubListItem from '@/components/beerPub/list/index'
+import Layout from '@/layout/index'
 
 export default {
   components: {
@@ -39,7 +37,6 @@ export default {
   },
   data () {
     return {
-      static_url: STATIC_URL
     }
   },
   methods: {
