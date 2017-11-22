@@ -5,6 +5,7 @@ import feed from './modules/feed'
 import pub from './modules/pub'
 import beer from './modules/beer'
 import news from './modules/news'
+import rank from './modules/rank'
 
 Vue.use(Vuex)
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     feed,
     pub,
     beer,
-    news
+    news,
+    rank
   }
 })
