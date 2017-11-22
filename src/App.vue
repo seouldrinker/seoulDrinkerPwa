@@ -5,8 +5,20 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-  name: 'app'
+  name: 'app',
+  methods: {
+    ...mapActions([
+      'retrievePubRank',
+      'retrieveBeerRank'
+    ])
+  },
+  created () {
+    this.retrievePubRank()
+    this.retrieveBeerRank()
+  }
 }
 </script>
 
