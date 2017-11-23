@@ -1,23 +1,25 @@
 <template>
   <div id="feedContainer">
     <app-layout>
-      <ul slot="contents">
-        <li v-for="(feed, index) in getFeedList" :key="index">
-          <app-feed-header
-            :userImage="feed.user.picture"
-            :userName="feed.user.name"
-            :feedNewsDate="feed.udt_dt"
-          />
-          <app-feed-image
-            :feedNewsImage="feed.image"
-          />
-          <app-feed-contents
-            :beers="feed.beers"
-            :pub="feed.pub"
-            :feedContext="feed.context"
-          />
-        </li>
-      </ul>
+      <main slot="contents">
+        <ul>
+          <li v-for="(feed, index) in getFeedList" :key="index">
+            <app-feed-header
+              :userImage="feed.user.picture"
+              :userName="feed.user.name"
+              :feedNewsDate="feed.udt_dt"
+            />
+            <app-feed-image
+              :feedNewsImage="feed.image"
+            />
+            <app-feed-contents
+              :beers="feed.beers"
+              :pub="feed.pub"
+              :feedContext="feed.context"
+            />
+          </li>
+        </ul>
+      </main>
     </app-layout>
   </div>
 </template>

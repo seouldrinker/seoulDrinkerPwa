@@ -9,15 +9,17 @@
           <span class="title">Beer</span>
         </div>
       </header>
-      <ul slot="contents">
-        <li v-for="(beer, index) in getBeerList" :key="index">
-          <app-list-item
-            :isBeer="true"
-            :data="beer"
-            :image="beer.image"
-          />
-        </li>
-      </ul>
+      <main slot="contents">
+        <ul>
+          <li v-for="(beer, index) in getBeerList" :key="index">
+            <app-list-item
+              :isBeer="true"
+              :data="beer"
+              :image="beer.image"
+            />
+          </li>
+        </ul>
+      </main>
     </app-layout>
   </div>
 </template>

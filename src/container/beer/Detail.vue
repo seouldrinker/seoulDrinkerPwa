@@ -9,29 +9,31 @@
           <span class="title">Beer</span>
         </div>
       </header>
-      <div slot="contents" v-if="getBeerDetail">
-        <app-detail-header
-          :brandImage="getBeerDetail.brewery.brand_image"
-          :titleImage="getBeerDetail.brewery.logo_image"
-          :engName="getBeerDetail.eng_name"
-          :korName="getBeerDetail.kor_name"
-        />
-        <app-detail-info
-          :beerFeature="getBeerDetail.feature"
-          :beerStyle="getBeerDetail.style"
-          :beerRelease="getBeerDetail.release"
-          :beerAbv="getBeerDetail.abv"
-        />
-        <app-detail-contents
-          :about="getBeerDetail.brewery.about"
-          :breweryEngName="getBeerDetail.brewery.eng_name"
-          :breweryKorName="getBeerDetail.brewery.kor_name"
-          :breweryLocation="getBeerDetail.brewery.location"
-          :breweryPhone="getBeerDetail.brewery.phone"
-          :feedList="getBeerDetail._feedList"
-          :rank="getRank()"
-        />
-      </div>
+      <main slot="contents">
+        <div v-if="getBeerDetail">
+          <app-detail-header
+            :brandImage="getBeerDetail.brewery.brand_image"
+            :titleImage="getBeerDetail.brewery.logo_image"
+            :engName="getBeerDetail.eng_name"
+            :korName="getBeerDetail.kor_name"
+          />
+          <app-detail-info
+            :beerFeature="getBeerDetail.feature"
+            :beerStyle="getBeerDetail.style"
+            :beerRelease="getBeerDetail.release"
+            :beerAbv="getBeerDetail.abv"
+          />
+          <app-detail-contents
+            :about="getBeerDetail.brewery.about"
+            :breweryEngName="getBeerDetail.brewery.eng_name"
+            :breweryKorName="getBeerDetail.brewery.kor_name"
+            :breweryLocation="getBeerDetail.brewery.location"
+            :breweryPhone="getBeerDetail.brewery.phone"
+            :feedList="getBeerDetail._feedList"
+            :rank="getRank()"
+          />
+        </div>
+      </main>
     </app-layout>
   </div>
 </template>

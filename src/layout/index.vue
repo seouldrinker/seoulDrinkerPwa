@@ -7,11 +7,11 @@
         </div>
       </header>
     </slot>
-    <main>
-      <slot name="contents">
+    <slot name="contents">
+      <main>
         <div>no data</div>
-      </slot>
-    </main>
+      </main>
+    </slot>
   </div>
 </template>
 

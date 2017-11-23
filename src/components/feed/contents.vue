@@ -21,7 +21,6 @@ export default {
   props: ['beers', 'pub', 'feedContext'],
   data () {
     return {
-      isActive: false
     }
   }
 }

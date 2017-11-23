@@ -9,15 +9,17 @@
           <span class="title">Pub</span>
         </div>
       </header>
-      <ul slot="contents">
-        <li v-for="(pub, index) in getPubList" :key="index">
-          <app-list-item
-            :isBeer="false"
-            :data="pub"
-            :image="pub.brewery.logo_image || pub.brewery.brand_image"
-          />
-        </li>
-      </ul>
+      <main slot="contents">
+        <ul>
+          <li v-for="(pub, index) in getPubList" :key="index">
+            <app-list-item
+              :isBeer="false"
+              :data="pub"
+              :image="pub.brewery.logo_image || pub.brewery.brand_image"
+            />
+          </li>
+        </ul>
+      </main>
     </app-layout>
   </div>
 </template>

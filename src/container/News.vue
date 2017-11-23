@@ -7,21 +7,23 @@
           <span class="title">News</span>
         </div>
       </header>
-      <ul slot="contents">
-        <li v-for="(news, index) in getNewsList" :key="index">
-          <app-feed-header
-            :userImage="`news_default_profile`"
-            :userName="`서울 드링커`"
-            :feedNewsDate="news.udt_dt"
-          />
-          <app-feed-image
-            :feedNewsImage="news.image"
-          />
-          <app-news-contents
-            :newsContext="news.context"
-          />
-        </li>
-      </ul>
+      <main slot="contents">
+        <ul>
+          <li v-for="(news, index) in getNewsList" :key="index">
+            <app-feed-header
+              :userImage="`news_default_profile`"
+              :userName="`서울 드링커`"
+              :feedNewsDate="news.udt_dt"
+            />
+            <app-feed-image
+              :feedNewsImage="news.image"
+            />
+            <app-news-contents
+              :newsContext="news.context"
+            />
+          </li>
+        </ul>
+      </main>
     </app-layout>
   </div>
 </template>
