@@ -1,12 +1,14 @@
 <template>
   <div id="beerDetailContainer">
     <app-layout>
-      <div slot="header" class="header__text">
-        <router-link class="logo" :to="`/`" tag="span">
-          <img src="../../assets/common/back.png" alt="back">
-        </router-link>
-        <span class="title">Beer</span>
-      </div>
+      <header slot="header" class="invisible">
+        <div class="header__text">
+          <router-link class="logo" :to="`/beer`" tag="span">
+            <img src="../../assets/common/back.png" alt="back">
+          </router-link>
+          <span class="title">Beer</span>
+        </div>
+      </header>
       <div slot="contents" v-if="getBeerDetail">
         <app-detail-header
           :brandImage="getBeerDetail.brewery.brand_image"

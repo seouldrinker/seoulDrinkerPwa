@@ -1,12 +1,14 @@
 <template>
   <div id="pubDetailContainer">
     <app-layout>
-      <div slot="header" class="header__text">
-        <router-link class="logo" :to="`/`" tag="span">
-          <img src="../../assets/common/back.png" alt="back">
-        </router-link>
-        <span class="title">Pub</span>
-      </div>
+      <header slot="header" class="invisible">
+        <div class="header__text">
+          <router-link class="logo" :to="`/pub`" tag="span">
+            <img src="../../assets/common/back.png" alt="back">
+          </router-link>
+          <span class="title">Pub</span>
+        </div>
+      </header>
       <div slot="contents" v-if="getPubDetail">
         <app-detail-header
           :brandImage="getPubDetail.brewery.brand_image"

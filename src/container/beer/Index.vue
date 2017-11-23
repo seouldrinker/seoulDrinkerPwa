@@ -1,12 +1,14 @@
 <template>
   <div id="beerListContainer">
     <app-layout>
-      <div slot="header" class="header__text">
-        <router-link class="logo" :to="`/`" tag="span">
-          <img src="../../assets/common/back.png" alt="back">
-        </router-link>
-        <span class="title">Beer</span>
-      </div>
+      <header slot="header">
+        <div class="header__text">
+          <router-link class="logo" :to="`/`" tag="span">
+            <img src="../../assets/common/back.png" alt="back">
+          </router-link>
+          <span class="title">Beer</span>
+        </div>
+      </header>
       <ul slot="contents">
         <li v-for="(beer, index) in getBeerList" :key="index">
           <app-list-item

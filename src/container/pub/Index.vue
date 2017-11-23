@@ -1,12 +1,14 @@
 <template>
   <div id="pubListContainer">
     <app-layout>
-      <div slot="header" class="header__text">
-        <router-link class="logo" :to="`/`" tag="span">
-          <img src="../../assets/common/back.png" alt="back">
-        </router-link>
-        <span class="title">Pub</span>
-      </div>
+      <header slot="header">
+        <div class="header__text">
+          <router-link class="logo" :to="`/`" tag="span">
+            <img src="../../assets/common/back.png" alt="back">
+          </router-link>
+          <span class="title">Pub</span>
+        </div>
+      </header>
       <ul slot="contents">
         <li v-for="(pub, index) in getPubList" :key="index">
           <app-list-item

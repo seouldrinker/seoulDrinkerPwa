@@ -1,12 +1,12 @@
 <template>
   <div id="commonLayout">
-    <header>
-      <slot name="header">
+    <slot name="header">
+      <header>
         <div class="header__logo">
           <img src="../assets/common/logo.png" alt="SeoulDrinker">
         </div>
-      </slot>
-    </header>
+      </header>
+    </slot>
     <main>
       <slot name="contents">
         <div>no data</div>
@@ -28,23 +28,25 @@ header {
   background-color: #eea51b;
   color: #ffffff;
   box-shadow: 0 0 10px #4a5156;
-  .header__logo {
+  &.invisible {
+    background-color: rgba(0,0,0,0);
+    box-shadow: none;
+  }
+  & > .header__logo {
     position: relative;
+    width: 120px;
+    padding: 10px 0 0 0;
+    margin: 0 auto;
     font-size: 20px;
     line-height: 1;
     letter-spacing: .02em;
     font-weight: 400;
     box-sizing: border-box;
-    &.header__logo {
-      width: 120px;
-      padding-top: 10px;
-      margin: 0 auto;
-      img {
-        width: 100%;
-      }
+    img {
+      width: 100%;
     }
   }
-  .header__text {
+  & > .header__text {
     padding: 10px 0 0 0;
     & span {
       display: inline-block;
