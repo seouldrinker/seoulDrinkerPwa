@@ -1,5 +1,5 @@
 <template>
-  <div class="feedNewsImage">
+  <div id="feedNewsImage">
     <img :src="`${static_url}/${feedNewsImage}`" alt="SeoulDrinker">
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .feedNewsImage {
+  #feedNewsImage {
     font-size: 0;
     img {
       width: 100%;

@@ -1,5 +1,5 @@
 <template>
-  <div class="newsContents">
+  <div id="newsContents">
     <div class="context">{{ newsContext }}</div>
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .newsContents {
+  #newsContents {
     padding: 18px;
     .context {
       font-size: 14px;

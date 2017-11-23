@@ -1,5 +1,5 @@
 <template>
-  <div class="beerPubOtherInfo">
+  <div id="pubListContents">
     <div class="location" v-if="data.location">{{ data.location }}</div>
     <div class="phone" v-if="data.phone">{{ data.phone }}</div>
   </div>
@@ -12,6 +12,5 @@ export default {
 </script>
 
 <style lang="scss">
-  .beerPubOtherInfo {
-  }
+
 </style>

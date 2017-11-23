@@ -1,5 +1,5 @@
 <template>
-  <router-link class="beerPubHeader" :class="isBeer ? 'beerHeader' : 'pubHeader'"
+  <router-link id="beerPubListIndex" :class="isBeer ? 'beerHeader' : 'pubHeader'"
     :to="isBeer ? `/beer/${data._id}` : `/pub/${data._id}`" tag="div">
     <div class="image">
       <img :src="`${static_url}/${image}`" alt="SeoulDrinker">
@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .beerPubHeader {
+  #beerPubListIndex {
     padding: 8px 0 0 16px;
     border-bottom: 1px solid #E2E2E2;
     box-sizing: border-box;

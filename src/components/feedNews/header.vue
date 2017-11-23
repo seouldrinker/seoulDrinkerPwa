@@ -1,5 +1,5 @@
 <template>
-  <div class="feedNewsHeader">
+  <div id="feedNewsHeader">
     <span class="profileImage">
       <img :src="getFilteredImage()" alt="SeoulDrinker">
     </span>
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .feedNewsHeader {
+  #feedNewsHeader {
     height: 54px;
     padding: 10px 0 0 16px;
     box-sizing: border-box;

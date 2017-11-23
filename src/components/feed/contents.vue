@@ -1,5 +1,5 @@
 <template>
-  <div class="feedContents">
+  <div id="feedContents">
     <div class="pub">
       <router-link :to="`/pub/${pub._id}`" tag="span">
         {{ pub.kor_name || pub.eng_name }}
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .feedContents {
+  #feedContents {
     padding: 14px 15px;
     & > .pub {
       margin: 0 0 0 28px;

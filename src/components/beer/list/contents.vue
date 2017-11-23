@@ -1,5 +1,5 @@
 <template>
-  <div class="beerPubOtherInfo">
+  <div id="beerListContents">
     <div class="style" v-if="data.style">Style : {{ data.style }}</div>
     <div class="abv" v-if="data.abv">ABV : {{ data.abv }}</div>
   </div>
@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .beerPubOtherInfo {
+  #beerListContents {
     & > .style, .abv {
       display: inline-block;
     }
