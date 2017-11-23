@@ -1,13 +1,13 @@
 <template>
   <div class="feedContents">
     <div class="pub">
-      <router-link :to="`/pub/${pub.index}`" tag="span">
+      <router-link :to="`/pub/${pub._id}`" tag="span">
         {{ pub.kor_name || pub.eng_name }}
       </router-link>
     </div>
     <ul class="beers">
       <li v-for="(beer, index) in beers" :key="index">
-        <router-link :to="`/beer/${beer.index}`" tag="span">
+        <router-link :to="`/beer/${beer._id}`" tag="span">
           #{{ beer.kor_name || beer.eng_name }}
         </router-link>
       </li>

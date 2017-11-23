@@ -3,9 +3,9 @@
     <app-layout>
       <header slot="header" class="invisible">
         <div class="header__text">
-          <router-link class="logo" :to="`/beer`" tag="span">
+          <span class="logo" @click="goAnyWhere(-1)">
             <img src="../../assets/common/back.png" alt="back">
-          </router-link>
+          </span>
           <span class="title">Beer</span>
         </div>
       </header>
@@ -75,6 +75,9 @@ export default {
         return index > -1 ? this.getBeerRank[index].rank : '-'
       }
       return '-'
+    },
+    goAnyWhere (n) {
+      return this.$router.go(n)
     }
   },
   created () {
