@@ -21,6 +21,7 @@
         </ul>
       </main>
     </app-layout>
+    <app-navigator :isFeed="true" :isPub="false" :isBeer="false" :isNews="false"/>
   </div>
 </template>
 
@@ -29,13 +30,16 @@ import { mapGetters, mapActions } from 'vuex'
 import Header from '@/components/feedNews/header'
 import Image from '@/components/feedNews/image'
 import Contents from '@/components/feed/contents'
+
 import Layout from '@/layout/index'
+import Navigator from '@/layout/navigator'
 
 import { STATIC_URL } from '@/config'
 
 export default {
   components: {
     appLayout: Layout,
+    appNavigator: Navigator,
     appFeedHeader: Header,
     appFeedImage: Image,
     appFeedContents: Contents
@@ -62,5 +66,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+#feedContainer {
+  margin: 0 0 50px 0;
+}
 </style>

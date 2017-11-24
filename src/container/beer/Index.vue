@@ -3,13 +3,10 @@
     <app-layout>
       <header slot="header">
         <div class="header__text">
-          <router-link class="logo" :to="`/`" tag="span">
-            <img src="../../assets/common/back.png" alt="back">
-          </router-link>
-          <span class="title">Beer</span>
+          <span class="title noBack">Beer</span>
         </div>
       </header>
-      <main slot="contents">
+      <main slot="contents" v-if="getBeerList">
         <ul>
           <li v-for="(beer, index) in getBeerList" :key="index">
             <app-list-item
@@ -21,6 +18,7 @@
         </ul>
       </main>
     </app-layout>
+    <app-navigator :isFeed="false" :isPub="false" :isBeer="true" :isNews="false"/>
   </div>
 </template>
 
@@ -28,10 +26,12 @@
 import { mapGetters, mapActions } from 'vuex'
 import BeerPubListItem from '@/components/beerPub/list/index'
 import Layout from '@/layout/index'
+import Navigator from '@/layout/navigator'
 
 export default {
   components: {
     appLayout: Layout,
+    appNavigator: Navigator,
     appListItem: BeerPubListItem
   },
   computed: {
@@ -55,5 +55,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+#beerListContainer {
+  margin: 0 0 50px 0;
+}
 </style>

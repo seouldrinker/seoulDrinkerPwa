@@ -3,11 +3,10 @@
     <app-layout>
       <header slot="header">
         <div class="header__text">
-          <router-link class="logo" :to="`/`" tag="span"><img src="../assets/common/back.png" alt="back"></router-link>
-          <span class="title">News</span>
+          <span class="title noBack">News</span>
         </div>
       </header>
-      <main slot="contents">
+      <main slot="contents" v-if="getNewsList">
         <ul>
           <li v-for="(news, index) in getNewsList" :key="index">
             <app-feed-header
@@ -25,6 +24,7 @@
         </ul>
       </main>
     </app-layout>
+    <app-navigator :isFeed="false" :isPub="false" :isBeer="false" :isNews="true"/>
   </div>
 </template>
 
@@ -35,12 +35,14 @@ import Image from '@/components/feedNews/image'
 import Contents from '@/components/news/contents'
 
 import Layout from '@/layout/index'
+import Navigator from '@/layout/navigator'
 
 import { STATIC_URL } from '@/config'
 
 export default {
   components: {
     appLayout: Layout,
+    appNavigator: Navigator,
     appFeedHeader: Header,
     appFeedImage: Image,
     appNewsContents: Contents
@@ -67,5 +69,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+#newsContainer {
+  margin: 0 0 50px 0;
+}
 </style>
