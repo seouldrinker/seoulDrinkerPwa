@@ -9,32 +9,31 @@
           <span class="title">Pub</span>
         </div>
       </header>
-      <main slot="contents">
-        <div v-if="getPubDetail">
-          <app-detail-header
-            :brandImage="getPubDetail.brewery.brand_image"
-            :titleImage="getPubDetail.brewery.logo_image"
-            :engName="getPubDetail.eng_name"
-            :korName="getPubDetail.kor_name"
-          />
-          <app-detail-info
-            :pubLocation="getPubDetail.location"
-            :pubPhone="getPubDetail.phone"
-            :pubHomepage="getPubDetail.brewery.homepage"
-            :pubEst="getPubDetail.brewery.est"
-            :pubFacebook="getPubDetail.brewery.facebook"
-            :pubInstagram="getPubDetail.brewery.instagram"
-          />
-          <app-detail-contents
-            :about="getPubDetail.brewery.about"
-            :breweryEngName="getPubDetail.brewery.eng_name"
-            :breweryKorName="getPubDetail.brewery.kor_name"
-            :breweryLocation="getPubDetail.brewery.location"
-            :breweryPhone="getPubDetail.brewery.phone"
-            :feedList="getPubDetail._feedList"
-            :rank="getRank()"
-          />
-        </div>
+      <main slot="contents" class="detailHeight" v-if="getPubDetail">
+        <app-detail-header
+          :brandImage="getPubDetail.brewery.brand_image"
+          :titleImage="getPubDetail.brewery.logo_image"
+          :engName="getPubDetail.eng_name"
+          :korName="getPubDetail.kor_name"
+        />
+        <app-detail-info
+          :pubLocation="getPubDetail.location"
+          :pubPhone="getPubDetail.phone"
+          :pubHomepage="getPubDetail.brewery.homepage"
+          :pubEst="getPubDetail.brewery.est"
+          :pubFacebook="getPubDetail.brewery.facebook"
+          :pubInstagram="getPubDetail.brewery.instagram"
+        />
+        <app-detail-contents
+          :about="getPubDetail.brewery.about"
+          :breweryImage="getPubDetail.brewery.brand_image"
+          :breweryEngName="getPubDetail.brewery.eng_name"
+          :breweryKorName="getPubDetail.brewery.kor_name"
+          :breweryLocation="getPubDetail.brewery.location"
+          :breweryPhone="getPubDetail.brewery.phone"
+          :feedList="getPubDetail._feedList"
+          :rank="getRank()"
+        />
       </main>
     </app-layout>
   </div>
@@ -46,8 +45,6 @@ import BeerPubDetailHeader from '@/components/beerPub/detail/header'
 import BeerPubDetailContents from '@/components/beerPub/detail/contents'
 import PubDetailInfo from '@/components/pub/detail/info'
 import Layout from '@/layout/index'
-
-import { STATIC_URL } from '@/config'
 
 export default {
   components: {
@@ -64,7 +61,6 @@ export default {
   },
   data () {
     return {
-      static_url: STATIC_URL
     }
   },
   methods: {

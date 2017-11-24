@@ -1,7 +1,7 @@
 <template>
   <div id="feedContainer">
     <app-layout>
-      <main slot="contents">
+      <main slot="contents" v-if="getFeedList">
         <ul>
           <li v-for="(feed, index) in getFeedList" :key="index">
             <app-feed-header
