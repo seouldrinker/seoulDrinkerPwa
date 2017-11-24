@@ -4,6 +4,9 @@
       <header slot="header">
         <div class="header__text">
           <span class="title noBack">Pub</span>
+          <router-link :to="`/pub/rank`" tag="span" class="rank">
+            <img src="../../assets/common/rank.png" alt="rank">
+          </router-link>
         </div>
       </header>
       <main slot="contents" v-if="getPubList">

@@ -25,14 +25,14 @@ export default new Router({
       component: Pub
     },
     {
-      path: '/pub/:id',
-      name: 'PubDetail',
-      component: PubDetail
-    },
-    {
       path: '/pub/rank',
       name: 'PubRank',
       component: PubRank
+    },
+    {
+      path: '/pub/:id',
+      name: 'PubDetail',
+      component: PubDetail
     },
     {
       path: '/beer',
@@ -40,14 +40,14 @@ export default new Router({
       component: Beer
     },
     {
-      path: '/beer/:id',
-      name: 'BeerDetail',
-      component: BeerDetail
-    },
-    {
       path: '/beer/rank',
       name: 'BeerRank',
       component: BeerRank
+    },
+    {
+      path: '/beer/:id',
+      name: 'BeerDetail',
+      component: BeerDetail
     },
     {
       path: '/news',

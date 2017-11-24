@@ -4,6 +4,9 @@
       <header slot="header">
         <div class="header__text">
           <span class="title noBack">Beer</span>
+          <router-link :to="`/beer/rank`" tag="span" class="rank">
+            <img src="../../assets/common/rank.png" alt="rank">
+          </router-link>
         </div>
       </header>
       <main slot="contents" v-if="getBeerList">

@@ -71,6 +71,17 @@ export default {
           font-size: 15px;
           font-weight: 800;
         }
+        &.rank {
+          float: right;
+          &:hover {
+            cursor: pointer;
+          }
+          &:after {
+            content: '';
+            display: table;
+            clear: both;
+          }
+        }
       }
     }
   }
