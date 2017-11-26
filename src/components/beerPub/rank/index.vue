@@ -38,7 +38,8 @@ export default {
 
 <style lang="scss">
 #beerPubRankContainer {
-  margin: 4px 20px;
+  padding: 8px 20px;
+  border-bottom: 1px solid #e2e2e2;
   & > span {
     display: inline-block;
     vertical-align: middle;
@@ -69,7 +70,10 @@ export default {
       }
     }
     &.info {
+      max-width: 110px;
       margin: 0 0 0 10px;
+      overflow-x: scroll;
+      white-space: nowrap;
       font-size: 12px;
       font-weight: 900;
       & > .name {
