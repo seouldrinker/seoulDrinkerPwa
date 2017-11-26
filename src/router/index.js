@@ -13,6 +13,7 @@ import News from '@/container/News'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',

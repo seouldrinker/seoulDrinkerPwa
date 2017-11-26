@@ -14,6 +14,8 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const loadMinified = require('./load-minified')
 
+const PrerenderSpaPlugin = require('prerender-spa-plugin')
+
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
@@ -36,6 +38,10 @@ const webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
+    new PrerenderSpaPlugin(
+      path.join(__dirname, '../dist'),
+      [ '/', '/beer', '/beer/rank', '/pub', '/pub/rank', '/news' ]
+    ),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
