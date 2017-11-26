@@ -16,6 +16,8 @@ const loadMinified = require('./load-minified')
 
 const PrerenderSpaPlugin = require('prerender-spa-plugin')
 
+const { API_CACHE_PATTERN } = require('../src/config')
+
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
@@ -114,7 +116,11 @@ const webpackConfig = merge(baseWebpackConfig, {
       filename: 'service-worker.js',
       staticFileGlobs: ['dist/**/*.{js,html,css}'],
       minify: true,
-      stripPrefix: 'dist/'
+      stripPrefix: 'dist/',
+      runtimeCaching: [{
+        urlPattern: API_CACHE_PATTERN,
+        handler: 'networkFirst',
+      }]
     })
   ]
 })
