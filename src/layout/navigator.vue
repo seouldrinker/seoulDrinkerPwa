@@ -14,6 +14,12 @@
       </div>
       <div class="title" :class="isPub && 'choice'">PUB</div>
     </router-link>
+    <span>
+      <div class="push__image image push-btn">
+        <img src="../assets/push/disable.png" alt="push" class="image1">
+        <img src="../assets/push/enable.png" alt="push" class="image2" style="display: none;">
+      </div>
+    </span>
     <router-link :to="`/beer`" tag="span" class="beer">
       <div class="beer__image image">
         <img v-if="isBeer" src="../assets/common/yellow_beer.png" alt="beer">
@@ -49,7 +55,7 @@ export default {
   font-size: 0;
   & > span {
     display: inline-block;
-    width: calc(100% / 4);
+    width: calc(100% / 5);
     vertical-align: top;
     text-align: center;
     &:hover {
@@ -74,6 +80,11 @@ export default {
         &.news__image {
           width: 18px;
           height: 20px;
+        }
+        &.push__image {
+          & > img {
+            width: 30px;
+          }
         }
         & > img {
           width: 100%;
