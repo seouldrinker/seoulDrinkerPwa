@@ -1,3 +1,107 @@
+
+let isSubscribed = false;
+let swRegistration = null;
+
+const applicationServerPublicKey = 'BLNk7puVbp-ItqU_xoiTr8H9NTW8rK1fRq5Mc' +
+  '-hwvK9zEJbZGPK7FDgFkIzzTloCyXIThbGrj0PyNiHJZDD9cys';
+
+// subscribe 상태 체크 후 버튼 활성화
+function updateBtn() {
+  const pushButtonImage = document.querySelectorAll('.push-btn img');
+  if (isSubscribed) {
+    pushButtonImage[0].style.display = 'none';
+    pushButtonImage[1].style.display = 'inline-block';
+  } else {
+    pushButtonImage[0].style.display = 'inline-block';
+    pushButtonImage[1].style.display = 'none';
+  }
+
+  if (Notification.permission === 'denied') {
+    alert('알림 권한이 거부되어있습니다. 풀어주세요~');
+    return;
+  }
+}
+
+// subscribe 상태 체크
+function initializeUI() {
+  const pushButton = document.querySelector('.push-btn');
+  pushButton.addEventListener('click', function() {
+    isSubscribed ? unsubscribeUser() : subscribeUser();
+  });
+
+  swRegistration.pushManager.getSubscription()
+  .then(function(subscription) {
+    isSubscribed = !(subscription === null);
+
+    if (isSubscribed) {
+      console.log('User IS subscribed.');
+    } else {
+      console.log('User is NOT subscribed.');
+    }
+
+    updateBtn();
+  });
+}
+
+function subscribeUser() {
+  // 인코딩된 애플리케이션 서버의 공개 키
+  const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
+  // subscribe 정보 요구.
+  swRegistration.pushManager.subscribe({
+    userVisibleOnly: true,    // 푸시 전송시 항상 알림을 표시할 권한
+    applicationServerKey: applicationServerKey
+  })
+  .then(function(subscription) {
+    console.log('User is subscribed:', subscription);
+
+    isSubscribed = true;
+
+    updateBtn();
+  })
+  .catch(function(err) {
+    console.log('Failed to subscribe the user: ', err);
+    updateBtn();
+  });
+}
+
+function unsubscribeUser() {
+  // 현재 subscribe 정보를 가져옴.
+  swRegistration.pushManager.getSubscription()
+  .then(function(subscription) {
+    console.log(subscription);
+    if (subscription) {
+      return subscription.unsubscribe().then(function (successful) {
+        console.log('User is unsubscribed.');
+
+        // 서버에서 지워야 하기 때문에 여기서는 눌러도 권한이 바뀌지 않음.
+        // TODO: Tell application server to delete subscription
+
+        isSubscribed = false;
+
+        updateBtn();
+      });
+    }
+  })
+  .catch(function(error) {
+    console.log('Error unsubscribing', error);
+  })
+}
+
+function urlB64ToUint8Array(base64String) {
+  const padding = '='.repeat((4 - base64String.length % 4) % 4);
+  const base64 = (base64String + padding)
+    .replace(/\-/g, '+')
+    .replace(/_/g, '/');
+
+  const rawData = window.atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
+}
+
 (function() {
   'use strict';
 
@@ -14,42 +118,22 @@
     );
 
   window.addEventListener('load', function() {
-      if ('serviceWorker' in navigator &&
-          (window.location.protocol === 'https:' || isLocalhost)) {
-        navigator.serviceWorker.register('/service-worker.js')
+    if ('serviceWorker' in navigator && 'PushManager' in window &&
+      (window.location.protocol === 'https:' || isLocalhost)) {
+      console.log('Service Worker and Push is supported');
+
+      navigator.serviceWorker.register('/service-worker.js')
         .then(function(registration) {
-          // updatefound is fired if service-worker.js changes.
-          registration.onupdatefound = function() {
-            // updatefound is also fired the very first time the SW is installed,
-            // and there's no need to prompt for a reload at that point.
-            // So check here to see if the page is already controlled,
-            // i.e. whether there's an existing service worker.
-            if (navigator.serviceWorker.controller) {
-              // The updatefound event implies that registration.installing is set
-              var installingWorker = registration.installing;
+        console.log('Service Worker is registered', registration);
+        swRegistration = registration;
 
-              installingWorker.onstatechange = function() {
-                switch (installingWorker.state) {
-                  case 'installed':
-                    // At this point, the old content will have been purged and the
-                    // fresh content will have been added to the cache.
-                    // It's the perfect time to display a "New content is
-                    // available; please refresh." message in the page's interface.
-                    break;
+        initializeUI();
 
-                  case 'redundant':
-                    throw new Error('The installing ' +
-                                    'service worker became redundant.');
-
-                  default:
-                    // Ignore
-                }
-              };
-            }
-          };
-        }).catch(function(e) {
-          console.error('Error during service worker registration:', e);
-        });
-      }
+      }).catch(function(error) {
+        console.error('Service Worker Error', error);
+      });
+    } else {
+      console.warn('Push messaging is not supported');
+    }
   });
 })();

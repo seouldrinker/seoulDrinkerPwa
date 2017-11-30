@@ -108,6 +108,11 @@ const webpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../static'),
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
+      },
+      {
+        from: path.resolve(__dirname, './sw.js'),
+        to: '',
+        ignore: ['.*']
       }
     ]),
     // service worker caching
@@ -120,7 +125,10 @@ const webpackConfig = merge(baseWebpackConfig, {
       runtimeCaching: [{
         urlPattern: API_CACHE_PATTERN,
         handler: 'networkFirst',
-      }]
+      }],
+      importScripts: [
+        'sw.js'
+      ]
     })
   ]
 })
