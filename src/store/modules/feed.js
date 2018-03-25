@@ -15,7 +15,7 @@ const getters = {
 
 const mutations = {
   'RETRIEVE_FEED_LIST' (state, results) {
-    Vue.set(state, 'feedList', results.feedList)
+    Vue.set(state, 'feedList', results)
   }
 }
 
